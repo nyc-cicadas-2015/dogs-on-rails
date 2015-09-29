@@ -17,7 +17,7 @@
           </li>
         </ul>
         <% else %>
-          <%= form_for :session, url: session_path, html: { class: 'navbar-form navbar-right', role: 'search' } do |f| %>
+          <%= form_for :session, url: session_path, html: { class: 'navbar-form navbar-right', role: 'search', id: 'login_form' } do |f| %>
           <div class='form-group'>
           <%= f.text_field :username, placeholder: :username, class: 'form-control' %>
           </div>
