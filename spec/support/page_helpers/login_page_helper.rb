@@ -12,5 +12,6 @@ class LoginPageHelper
       fill_in 'session_password', :with => user[:password]
     end
     click_button 'Sign In'
+    self
   end
 end
