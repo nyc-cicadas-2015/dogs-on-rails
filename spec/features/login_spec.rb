@@ -2,6 +2,7 @@ require_relative '../rails_helper'
 
 describe "the signin process" do
   before :each do
+    # factory girl
     create(:user)
   end
 
