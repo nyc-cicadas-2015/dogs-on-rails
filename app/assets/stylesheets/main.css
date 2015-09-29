@@ -1,5 +1,8 @@
 body {
   padding-top: 50px;
+  background-image: url('http://postalmuseum.si.edu/exhibits/images/2c1f_2_ontrain2.jpg');
+  background-repeat: no-repeat;
+  background-position: 50% 300px;
 }
 .main {
   padding: 40px 15px;
