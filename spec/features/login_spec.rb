@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 describe "the login/logout process" do
+  # FactoryGirl Methods:
+  # create()         - Make this thing, save, give it to me
+  # build()          - Make this thing, give it to me
+  # atrributes_for() - Give me a hash of attributes to make this thing
+
   let(:login_page) { LoginPageHelper.new }
   let(:user) { attributes_for(:user) }
 
