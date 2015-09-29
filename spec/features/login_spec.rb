@@ -2,18 +2,18 @@ require_relative '../rails_helper'
 
 describe "the signin process" do
   before :each do
-    User.create(username: 'test@example.com', password: '12345678')
+    create(:user)
   end
 
-  let(:user) { User.find_by(username: 'test@example.com') }
+  let(:user) { attributes_for(:user) }
 
   it "signs me in" do
     visit root_url
     within("#login_form") do
-      fill_in 'session_username', :with => 'test@example.com'
-      fill_in 'session_password', :with => '12345678'
+      fill_in 'session_username', :with => user[:username]
+      fill_in 'session_password', :with => user[:password]
     end
     click_button 'Sign In'
-    expect(page).to have_content "Welcome #{user.username}"
+    expect(page).to have_content "Welcome #{user[:username]}"
   end
 end
