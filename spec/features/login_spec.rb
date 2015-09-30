@@ -27,7 +27,7 @@ describe "the login/logout process" do
 
     it 'logs me out' do
       click_link 'Logout'
-      expect(page).to have_content 'Logged Out'
+      expect(page).to have_content 'So Long'
     end
 
     it 'has log in fields' do
