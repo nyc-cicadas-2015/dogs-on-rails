@@ -10,26 +10,30 @@
       <%= link_to 'Dogs-on-Rails', root_url, class: 'navbar-brand' %>
     </div>
     <div id="navbar-main" class="collapse navbar-collapse">
-        <% if logged_in? %>
+
+      <div id='logged_in' <%= logged_in? ? 'nil' : 'style=display:none' %>>
         <ul class='nav navbar-nav navbar-right'>
           <li>
             <%= link_to 'Logout', session_path, method: :delete %>
           </li>
         </ul>
-        <% else %>
-          <%= form_for :session, url: session_path, html: { class: 'navbar-form navbar-right', role: 'search', id: 'login_form' } do |f| %>
-          <div class='form-group'>
-          <%= f.text_field :username, placeholder: :username, class: 'form-control' %>
-          </div>
-          <div class='form-group'>
-          <%= f.password_field :password, placeholder: :password, class: 'form-control' %>
-          </div>
-          <button type="submit" class="btn btn-default">Sign In</button>
-          <% end %>
-          <ul class='nav navbar-nav navbar-right'>
-            <li><%= link_to 'Sign Up', new_user_path %></li>
-          </ul>
+      </div>
+
+      <div id='logged_out' <%= logged_in? ? 'style=display:none' : nil %>>
+        <%= form_for :session, url: session_path, html: { class: 'navbar-form navbar-right', role: 'search', id: 'login_form' } do |f| %>
+        <div class='form-group'>
+        <%= f.text_field :username, placeholder: :username, class: 'form-control' %>
+        </div>
+        <div class='form-group'>
+        <%= f.password_field :password, placeholder: :password, class: 'form-control' %>
+        </div>
+        <button type="submit" class="btn btn-default">Sign In</button>
         <% end %>
+        <ul class='nav navbar-nav navbar-right'>
+          <li><%= link_to 'Sign Up', new_user_path %></li>
+        </ul>
+      </div>
+
     </div>
   </div>
 </nav>

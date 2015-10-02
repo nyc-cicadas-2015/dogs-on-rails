@@ -5,12 +5,29 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(username: session_params[:username])
     if user.try(:authenticate, session_params[:password])
-      flash[:message] = "Welcome #{user.username}!!"
       session[:user_id] = user.id
+
+      respond_to do |fmt|
+        fmt.html {
+          flash[:message] = "Welcome #{user.username}!!"
+          redirect_to root_path
+        }
+        fmt.json { render json: user.to_json(only: [:username]) }
+      end
+
     else
-      flash[:error] = 'Incorrect username or password'
+
+      respond_to do |fmt|
+        fmt.html {
+          flash[:error] = 'Incorrect username or password'
+          redirect_to root_path
+        }
+        fmt.json {
+          render json: { message: 'incorrect username or password' }, status: 422
+        }
+      end
+
     end
-    redirect_to root_path
   end
 
   def destroy
